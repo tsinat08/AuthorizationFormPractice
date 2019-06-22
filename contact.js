@@ -21,23 +21,33 @@ class Contact extends React.Component {
     }
 
     render() {
+        var login = (
+            <form onSubmit= {this.authorize} action='#'>
+                <input type="password"
+                       placeholder="Password" />
+                <input type="submit" />
+            </form>)
+        const contactInfo =(
+            <ul>
+                <li>
+                    client@example.com
+                </li>
+                <li>
+                    555.555.5555
+                </li>
+            </ul>
+        );
         return (
             <div id="authorization">
-            <h1>Contact</h1>
-            <ul>
-            <li>
-            client@example.com
-    </li>
-        <li>
-        555.555.5555
-        </li>
-        </ul>
-        </div>
-    );
+                <h1>{this.state.authorized ? 'Contact' : 'Enter the Password' } </h1>
+                <h1>{this.state.authorized ? contactInfo : login } </h1>
+
+            </div>
+        );
     }
 }
 
 ReactDOM.render(
-<Contact />,
+    <Contact />,
     document.getElementById('app')
 );
